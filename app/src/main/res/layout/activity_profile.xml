@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.ProfileActivity">
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/ic_settings"
+            app:backgroundTint="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewPhotoProfile"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewPhotoProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewPhotoProfile"/>
+
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewName"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewEmail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/standard_color"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabTextColor="@color/white"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="55dp"
+        android:layout_gravity="end"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnSettingsChangePhotoProfile"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Cambiar foto de perfil"
+            android:textAlignment="textEnd"
+            android:textSize="10sp"
+            android:background="@color/white"
+            android:textColor="@color/standard_color"
+            app:backgroundTint="@null"
+            tools:ignore="SmallSp" />
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:background="@color/gray"/>
+
+        <Button
+            android:id="@+id/btnSettingsLogOut"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Cerrar sesion"
+            android:textAlignment="textEnd"
+            android:textSize="10sp"
+            android:textColor="@color/standard_color"
+            android:background="@color/white"
+            app:backgroundTint="@null"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

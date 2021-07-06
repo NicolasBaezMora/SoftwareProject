@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners
+        android:radius="20dp"/>
+
+    <gradient
+        android:startColor="@color/gradient_star_color_btn_log_in"
+        android:endColor="@color/gradient_end_color_btn_log_in"
+        android:angle="0"/>
+
+</shape>

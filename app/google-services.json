@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "790692790070",
+    "project_id": "fasttishopapp",
+    "storage_bucket": "fasttishopapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790692790070:android:b67b20dcc582287786fd97",
+        "android_client_info": {
+          "package_name": "com.example.softwareprojectapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790692790070-gkbbelve1e7en3ho6vk2omggr4d219j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.softwareprojectapp",
+            "certificate_hash": "55dbd199b032e96d4c413056b5771c07ee5b7d5a"
+          }
+        },
+        {
+          "client_id": "790692790070-8v7ejuct75pljior1picepqi0hh7ths3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4PMteprRzudcfIVAOeJzEm7nHauwc7iA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790692790070-8v7ejuct75pljior1picepqi0hh7ths3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
