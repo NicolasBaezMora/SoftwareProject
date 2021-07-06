@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp">
+    android:layout_height="190dp">
 
     <ImageView
         android:id="@+id/imageViewProductInventory"
@@ -33,6 +33,7 @@
         android:id="@+id/textViewDescriptionProductInventory"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:maxHeight="50dp"
         android:text="DESCRIPTION"
         android:textSize="20sp"
         android:layout_marginStart="20dp"
