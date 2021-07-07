@@ -22,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SoftwareProjectApp">
-        <activity android:name=".activities.ViewOrderActivity"></activity>
+        <activity android:name=".activities.ViewOrderActivity" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.SetUbicationOrderActivity" />
         <activity android:name=".activities.CarActivity" />

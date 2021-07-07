@@ -48,6 +48,8 @@ class LogInFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sessionCheckOut()
+
         logInFragBinding.btnLogIn.setOnClickListener(this)
         logInFragBinding.btnSignIn.setOnClickListener(this)
         logInFragBinding.cardViewBtnSignInGoogle.setOnClickListener(this)
