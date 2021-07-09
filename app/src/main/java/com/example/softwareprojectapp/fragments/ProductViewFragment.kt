@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.softwareprojectapp.R
@@ -24,7 +26,7 @@ class ProductViewFragment : Fragment(), View.OnClickListener {
 
     private val navigator by lazy { findNavController() }
     private val productData by lazy { arguments?.getSerializable("productData") as Product }
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelViewProduct::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelViewProduct::class.java) }
     private val signDollar by lazy { Html.fromHtml("<b>$</b>") }
 
 
@@ -38,29 +40,30 @@ class ProductViewFragment : Fragment(), View.OnClickListener {
         //return inflater.inflate(R.layout.fragment_product_view, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupInfoProduct()
 
-
         productViewFragBinding.btnAdd.setOnClickListener(this)
         productViewFragBinding.btnSubtract.setOnClickListener(this)
         productViewFragBinding.btnAddToCar.setOnClickListener(this)
+
+        vm.amount.observe(viewLifecycleOwner, Observer {
+            productViewFragBinding.amount.text = it.toString()
+            productViewFragBinding.textViewPrice.text = "$signDollar${it * productData.price}"
+        })
+
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onClick(view: View?){
         when(view?.id){
             productViewFragBinding.btnAdd.id -> {
                 vm.increaseAmount()
-                productViewFragBinding.amount.text = vm.amount.toString()
-                productViewFragBinding.textViewPrice.text = "$signDollar${vm.amount * productData.price}"
             }
             productViewFragBinding.btnSubtract.id -> {
                 vm.decreaseAmount()
-                productViewFragBinding.amount.text = vm.amount.toString()
-                productViewFragBinding.textViewPrice.text = "$signDollar${vm.amount * productData.price}"
             }
             productViewFragBinding.btnAddToCar.id -> {
                 makeOrder()
@@ -73,18 +76,18 @@ class ProductViewFragment : Fragment(), View.OnClickListener {
     private fun makeOrder(){
         val newOrder = SubOrder(
                 productData,
-                vm.amount,
-                (vm.amount * productData.price)
+                vm.amount.value!!,
+                (vm.amount.value!! * productData.price)
         )
         Car.addOrderToCar(newOrder)
     }
 
     @SuppressLint("SetTextI18n")
     private fun setupInfoProduct() {
-        if (productData.urlImage != "") Picasso.get().load(productData.urlImage).into(productViewFragBinding.imageViewProduct)
+        if (productData.urlImage.isNotEmpty()) Picasso.get().load(productData.urlImage).into(productViewFragBinding.imageViewProduct)
         productViewFragBinding.textViewTitleProduct.text = Html.fromHtml("<b>${productData.title}</b>")
         productViewFragBinding.textViewDescriptionProduct.text = productData.description
         productViewFragBinding.amount.text = vm.amount.toString()
-        productViewFragBinding.textViewPrice.text = "$signDollar${vm.amount * productData.price}"
+        productViewFragBinding.textViewPrice.text = "$signDollar${vm.amount.value!! * productData.price}"
     }
 }

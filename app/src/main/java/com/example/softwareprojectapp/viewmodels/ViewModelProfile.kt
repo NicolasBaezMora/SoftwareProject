@@ -1,5 +1,6 @@
 package com.example.softwareprojectapp.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,9 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ViewModelProfile: ViewModel() {
-
-    private val firebaseRepo = FirebaseRepo()
+class ViewModelProfile @ViewModelInject constructor(private val firebaseRepo: FirebaseRepo): ViewModel() {
 
     fun getDataFromUser(emailUserId: String): LiveData<User>{
         val userData = MutableLiveData<User>()

@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.softwareprojectapp.MainActivity
@@ -30,18 +31,22 @@ import com.example.softwareprojectapp.viewmodels.ViewModelAddPhotoProfile
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class AddProfilePhotoFragment : Fragment(), View.OnClickListener {
 
     private lateinit var addProfilePhotoFragBinding: FragmentAddProfilePhotoBinding
     private lateinit var imageUri: Uri
     private lateinit var dataUser: User
 
+    @Inject
+    lateinit var storageReference: StorageReference
+
     private val navigator by lazy { findNavController() }
-    private val storageReference by lazy { FirebaseStorage.getInstance().reference }
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelAddPhotoProfile::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelAddPhotoProfile::class.java) }
     private val codePermissionCamera by lazy { 100 }
     private val codePermissionMediaStore by lazy { 102 }
     private val codeActivityResultCamera by lazy { 101 }

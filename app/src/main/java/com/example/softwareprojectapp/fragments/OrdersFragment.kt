@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.softwareprojectapp.R
@@ -15,13 +16,15 @@ import com.example.softwareprojectapp.activities.ProfileActivity
 import com.example.softwareprojectapp.adapters.OrdersAdapter
 import com.example.softwareprojectapp.databinding.FragmentOrdersBinding
 import com.example.softwareprojectapp.viewmodels.ViewModelOrdersViewPager
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OrdersFragment : Fragment() {
 
     private lateinit var ordersFragBinding: FragmentOrdersBinding
     private lateinit var ordersAdapter: OrdersAdapter
 
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelOrdersViewPager::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelOrdersViewPager::class.java) }
     private val emailId by lazy {
         activity?.getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)?.getString("email", null) ?: ""
     }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,15 +20,16 @@ import com.example.softwareprojectapp.databinding.FragmentMyProductsBinding
 import com.example.softwareprojectapp.models.Product
 import com.example.softwareprojectapp.viewmodels.ViewModelProductInventory
 import com.google.firebase.storage.FirebaseStorage
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyProductsFragment : Fragment(), SearchView.OnQueryTextListener, View.OnClickListener {
 
     private lateinit var myProductsFragBinding: FragmentMyProductsBinding
     private lateinit var productInventoryAdapter: ProductInventoryAdapter
     private lateinit var dataCopyListProduct: List<Product>
 
-    private val firebaseStorage by lazy { FirebaseStorage.getInstance().reference }
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelProductInventory::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelProductInventory::class.java) }
     private val navigator by lazy { findNavController() }
     private val emailId by lazy {
         activity?.getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)?.getString("email", null) ?: ""

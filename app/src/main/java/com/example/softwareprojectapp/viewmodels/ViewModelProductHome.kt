@@ -1,5 +1,6 @@
 package com.example.softwareprojectapp.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,9 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ViewModelProductHome: ViewModel() {
-
-    private val firebaseRepo = FirebaseRepo()
+class ViewModelProductHome @ViewModelInject constructor(private val firebaseRepo: FirebaseRepo): ViewModel() {
 
     fun fetchProductsSnapshot(): LiveData<List<Product>> {
         val listProductsLiveData = MutableLiveData<List<Product>>()

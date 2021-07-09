@@ -1,21 +1,25 @@
 package com.example.softwareprojectapp.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ViewModelViewProduct(var priceProduct: Double = 0.0): ViewModel() {
+class ViewModelViewProduct: ViewModel() {
 
-    var amount: Int = 1
+    private var count = 1
+    private val _amount = MutableLiveData(1)
+    val amount: LiveData<Int> get() = _amount
 
     fun increaseAmount(){
-        amount++
+        count++
+        _amount.value = count
     }
 
     fun decreaseAmount(){
-        if (amount > 1) amount--
-    }
-
-    fun calculatePriceProduct(){
-        priceProduct *= amount
+        if (count > 1) {
+            count--
+            _amount.value = count
+        }
     }
 
 }

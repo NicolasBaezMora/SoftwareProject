@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.softwareprojectapp.R
@@ -23,13 +24,15 @@ import com.example.softwareprojectapp.databinding.FragmentAddProductBinding
 import com.example.softwareprojectapp.viewmodels.ViewModelAddProduct
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.storage.FirebaseStorage
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddProductFragment : Fragment(), View.OnClickListener {
 
     private lateinit var addProductFragBinding: FragmentAddProductBinding
     private var imageProduct: Uri? = null
 
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelAddProduct::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelAddProduct::class.java) }
     private val codePermissionMediaLocation by lazy { 10 }
     private val codeActivityResultMediaStore by lazy { 12 }
     private val emailUser by lazy { (activity as NavigationAppActivity).emailId }

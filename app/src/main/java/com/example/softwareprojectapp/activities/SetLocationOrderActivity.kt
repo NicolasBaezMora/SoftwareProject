@@ -3,7 +3,6 @@ package com.example.softwareprojectapp.activities
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +14,7 @@ import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.databinding.ActivitySetUbicationOrderBinding
 import com.example.softwareprojectapp.models.SubOrder
 import com.example.softwareprojectapp.objects.Car
-import com.example.softwareprojectapp.viewmodels.ViewModelSetUbicationAndMakeOrder
+import com.example.softwareprojectapp.viewmodels.ViewModelSetLocationAndMakeOrder
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -25,8 +24,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
 
-class SetUbicationOrderActivity :
+class SetLocationOrderActivity :
     AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener, View.OnClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
     private lateinit var setUbicationOrderActivityBinding: ActivitySetUbicationOrderBinding
@@ -37,7 +37,7 @@ class SetUbicationOrderActivity :
     private var coordinates: LatLng? = null
 
     private val codeRequestPermissionLocation by lazy { 101 }
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelSetUbicationAndMakeOrder::class.java) }
+    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelSetLocationAndMakeOrder::class.java) }
     private val emailId by lazy {
         this.getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)?.getString("email", null) ?: ""
     }

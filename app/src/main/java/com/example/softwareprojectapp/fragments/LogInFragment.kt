@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.softwareprojectapp.MainActivity
@@ -25,7 +26,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LogInFragment : Fragment(), View.OnClickListener {
 
     private lateinit var logInFragBinding: FragmentLogInBinding
@@ -33,7 +36,7 @@ class LogInFragment : Fragment(), View.OnClickListener {
     private val GOOGLE_SIGN_IN = 100
     private lateinit var myGoogleClient: GoogleSignInClient
     private var account: GoogleSignInAccount? = null
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelLogIn::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelLogIn::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -13,25 +13,33 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.adapters.PagerAdapter
 import com.example.softwareprojectapp.databinding.ActivityProfileBinding
 import com.example.softwareprojectapp.viewmodels.ViewModelProfile
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var profileActivityBinding: ActivityProfileBinding
 
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelProfile::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelProfile::class.java) }
     private val emailId by lazy {
         this.getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE).getString("email", null)
     }
     private val codePermissionAccessExternalStorage by lazy { 101 }
     private val codeIntentMediaStorage by lazy { 102 }
-    private val storageReference by lazy { FirebaseStorage.getInstance().reference }
+
+    @Inject
+    lateinit var storageReference: StorageReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

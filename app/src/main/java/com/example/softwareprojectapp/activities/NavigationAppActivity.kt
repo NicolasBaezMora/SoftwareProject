@@ -9,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.databinding.ActivityNavigationAppBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NavigationAppActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var navigationAppActivityBinding: ActivityNavigationAppBinding

@@ -1,7 +1,6 @@
 package com.example.softwareprojectapp.activities
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,12 +9,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.adapters.OrderCarAdapter
 import com.example.softwareprojectapp.databinding.ActivityCarBinding
 import com.example.softwareprojectapp.objects.Car
 
-class CarActivity : AppCompatActivity(), View.OnClickListener {
+class CarActivity: AppCompatActivity(), View.OnClickListener {
 
     private lateinit var orderCarAdapter: OrderCarAdapter
     private lateinit var carActivityBinding: ActivityCarBinding
@@ -63,7 +61,7 @@ class CarActivity : AppCompatActivity(), View.OnClickListener {
                 "listOrders" to Car.listOrder,
                 "balance" to Car.getTotal()
             )
-            val intentMakeOrder = Intent(this, SetUbicationOrderActivity::class.java).apply {
+            val intentMakeOrder = Intent(this, SetLocationOrderActivity::class.java).apply {
                 putExtra("data", bundleData)
             }
             startActivity(intentMakeOrder)

@@ -16,6 +16,7 @@
         android:required="true" />
 
     <application
+        android:name=".di.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,7 +25,7 @@
         android:theme="@style/Theme.SoftwareProjectApp">
         <activity android:name=".activities.ViewOrderActivity" />
         <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.SetUbicationOrderActivity" />
+        <activity android:name=".activities.SetLocationOrderActivity" />
         <activity android:name=".activities.CarActivity" />
 
         <meta-data

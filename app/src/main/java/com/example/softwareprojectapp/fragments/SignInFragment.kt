@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.softwareprojectapp.R
@@ -16,12 +17,14 @@ import com.example.softwareprojectapp.models.User
 import com.example.softwareprojectapp.viewmodels.ViewModelSignIn
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInFragment : Fragment(), View.OnClickListener {
 
     private lateinit var signInFragBinding: FragmentSignInBinding
     private val navigator by lazy { findNavController()}
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelSignIn::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelSignIn::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

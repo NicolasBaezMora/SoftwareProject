@@ -31,7 +31,7 @@ class ViewOrderActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickL
 
         order = intent.getSerializableExtra("order") as Order
 
-        viewOrderActivityBinding.textViewDestinationPlace.setText(order.address)
+        viewOrderActivityBinding.textViewDestinationPlace.text = order.address
         viewOrderActivityBinding.btnUpdateStateOrder.setOnClickListener(this)
         viewOrderActivityBinding.editTextOrderState.setText(order.state)
 

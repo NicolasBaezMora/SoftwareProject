@@ -9,7 +9,7 @@ import com.example.softwareprojectapp.databinding.ItemOrderCarBinding
 import com.example.softwareprojectapp.models.SubOrder
 import com.squareup.picasso.Picasso
 
-class OrderCarAdapter(
+class OrderCarAdapter constructor (
         var listSubOrders: List<SubOrder>,
         val onClickDeleteOrder: (itemSubOrder: SubOrder) -> Unit
 ): RecyclerView.Adapter<OrderCarAdapter.OrderViewHolder>() {

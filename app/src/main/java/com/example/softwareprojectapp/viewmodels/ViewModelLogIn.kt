@@ -1,20 +1,19 @@
 package com.example.softwareprojectapp.viewmodels
 
-import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.softwareprojectapp.firebase_repo.FirebaseRepo
 import com.example.softwareprojectapp.models.User
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ViewModelLogIn: ViewModel() {
-
-    private val firebaseRepo = FirebaseRepo()
+class ViewModelLogIn @ViewModelInject constructor (private val firebaseRepo: FirebaseRepo): ViewModel() {
 
     private val _progressBar = MutableLiveData<Boolean>()
     val progressBar: LiveData<Boolean> get() = _progressBar

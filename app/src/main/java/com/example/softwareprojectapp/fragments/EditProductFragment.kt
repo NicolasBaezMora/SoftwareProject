@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.softwareprojectapp.R
@@ -21,9 +22,13 @@ import com.example.softwareprojectapp.models.Product
 import com.example.softwareprojectapp.viewmodels.ViewModelEditProduct
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class EditProductFragment : Fragment(), View.OnClickListener {
 
     private lateinit var editProductFragBinding: FragmentEditProductBinding
@@ -32,9 +37,10 @@ class EditProductFragment : Fragment(), View.OnClickListener {
     private val navigator by lazy { findNavController() }
     private val codePermissionMediaLocation by lazy { 101 }
     private val codeActivityResultMediaStore by lazy { 102 }
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelEditProduct::class.java) }
-    private val storageReference by lazy { FirebaseStorage.getInstance().reference }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelEditProduct::class.java) }
 
+    @Inject
+    lateinit var storageReference: StorageReference
 
     private var imageProduct: Uri? = null
 

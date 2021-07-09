@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,13 +15,15 @@ import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.adapters.ProductHomeAdapter
 import com.example.softwareprojectapp.databinding.FragmentHomeBinding
 import com.example.softwareprojectapp.viewmodels.ViewModelProductHome
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var homeFragBinding: FragmentHomeBinding
     private lateinit var productHomeAdapter: ProductHomeAdapter
 
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelProductHome::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelProductHome::class.java) }
     private val navigator by lazy { findNavController() }
 
     override fun onCreateView(
