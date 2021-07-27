@@ -33,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
+import java.io.OutputStream
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -88,7 +89,7 @@ class AddProfilePhotoFragment : Fragment(), View.OnClickListener {
                 val builderDialog = AlertDialog.Builder(requireContext())
                 builderDialog.setTitle("¿Deseas volver?")
                 builderDialog.setMessage("Si vuelves deberas agregar tu foto desde tu perfil.")
-                builderDialog.setPositiveButton("Si"){ _, _ -> navigator.navigate(R.id.action_addProfilePhotoFragment_to_signInFragment) }
+                builderDialog.setPositiveButton("Si"){ _, _ -> navigator.navigateUp() }
                 builderDialog.setNegativeButton("Cancelar"){ _, _ ->}
                 builderDialog.create()
                 builderDialog.show()

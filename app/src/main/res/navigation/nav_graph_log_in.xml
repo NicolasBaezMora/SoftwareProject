@@ -22,11 +22,6 @@
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
-            android:id="@+id/action_signInFragment_to_logInFragment"
-            app:enterAnim="@anim/fragment_close_enter"
-            app:exitAnim="@anim/fragment_close_exit"
-            app:destination="@id/logInFragment" />
-        <action
             android:id="@+id/action_signInFragment_to_addProfilePhotoFragment"
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_open_exit"
@@ -37,10 +32,5 @@
         android:name="com.example.softwareprojectapp.fragments.AddProfilePhotoFragment"
         android:label="fragment_add_profile_photo"
         tools:layout="@layout/fragment_add_profile_photo" >
-        <action
-            android:id="@+id/action_addProfilePhotoFragment_to_signInFragment"
-            app:enterAnim="@anim/fragment_close_enter"
-            app:exitAnim="@anim/fragment_close_exit"
-            app:destination="@id/signInFragment" />
     </fragment>
 </navigation>

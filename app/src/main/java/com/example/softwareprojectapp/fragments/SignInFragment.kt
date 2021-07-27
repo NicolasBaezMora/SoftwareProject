@@ -50,7 +50,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            signInFragBinding.btnComeBack.id -> navigator.navigate(R.id.action_signInFragment_to_logInFragment)
+            signInFragBinding.btnComeBack.id -> navigator.navigateUp()
             signInFragBinding.btnNextSignIn.id -> emailAndPasswordSignIn()
         }
     }

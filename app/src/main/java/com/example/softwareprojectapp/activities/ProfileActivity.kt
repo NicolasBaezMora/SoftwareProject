@@ -49,7 +49,6 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
 
         setupViewPager()
         setupDataUser(emailId)
-        profileActivityBinding.btnSettings.setOnClickListener(this)
         profileActivityBinding.btnSettingsChangePhotoProfile.setOnClickListener(this)
         profileActivityBinding.btnSettingsLogOut.setOnClickListener(this)
     }
@@ -72,9 +71,6 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            profileActivityBinding.btnSettings.id -> if (profileActivityBinding.settings.visibility == View.GONE)
-                profileActivityBinding.settings.visibility = View.VISIBLE
-            else profileActivityBinding.settings.visibility = View.GONE
             profileActivityBinding.btnSettingsChangePhotoProfile.id -> {
                 changePhotoProfile()
             }

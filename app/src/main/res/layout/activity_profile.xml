@@ -12,18 +12,31 @@
         android:layout_height="match_parent"
         tools:context=".activities.ProfileActivity">
 
-        <Button
-            android:id="@+id/btnSettings"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnSettingsChangePhotoProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toEndOf="@id/cardViewPhotoProfile"
+            app:layout_constraintBottom_toBottomOf="@id/cardViewPhotoProfile">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_edit"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnSettingsLogOut"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_margin="20dp"
-            android:background="@drawable/ic_settings"
-            app:backgroundTint="@null"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-
-
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_logout_24"/>
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewPhotoProfile"
@@ -93,47 +106,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <LinearLayout
-        android:id="@+id/settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="55dp"
-        android:layout_gravity="end"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/btnSettingsChangePhotoProfile"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Cambiar foto de perfil"
-            android:textAlignment="textEnd"
-            android:textSize="10sp"
-            android:background="@color/white"
-            android:textColor="@color/standard_color"
-            app:backgroundTint="@null"
-            tools:ignore="SmallSp" />
-
-        <View
-            android:layout_width="200dp"
-            android:layout_height="2dp"
-            android:background="@color/gray"/>
-
-        <Button
-            android:id="@+id/btnSettingsLogOut"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Cerrar sesion"
-            android:textAlignment="textEnd"
-            android:textSize="10sp"
-            android:textColor="@color/standard_color"
-            android:background="@color/white"
-            app:backgroundTint="@null"
-            tools:ignore="SmallSp" />
-
-    </LinearLayout>
 
 
 </FrameLayout>
