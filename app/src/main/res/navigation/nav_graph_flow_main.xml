@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.softwareprojectapp.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:label=""
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_productViewFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/myProductsFragment"
         android:name="com.example.softwareprojectapp.fragments.MyProductsFragment"
-        android:label="fragment_my_products"
+        android:label=""
         tools:layout="@layout/fragment_my_products">
         <action
             android:id="@+id/action_myProductsFragment_to_addProductFragment"
@@ -35,21 +35,31 @@
     <fragment
         android:id="@+id/addProductFragment"
         android:name="com.example.softwareprojectapp.fragments.AddProductFragment"
-        android:label="fragment_add_product"
+        android:label="Añadir producto"
         tools:layout="@layout/fragment_add_product" >
     </fragment>
     <fragment
         android:id="@+id/editProductFragment"
         android:name="com.example.softwareprojectapp.fragments.EditProductFragment"
-        android:label="fragment_edit_product"
+        android:label="Editar producto"
         tools:layout="@layout/fragment_edit_product" >
     </fragment>
     <fragment
         android:id="@+id/productViewFragment"
         android:name="com.example.softwareprojectapp.fragments.ProductViewFragment"
-        android:label="fragment_product_view"
+        android:label=""
         tools:layout="@layout/fragment_product_view" >
     </fragment>
+    <activity
+        android:id="@+id/carActivity"
+        android:name="com.example.softwareprojectapp.activities.CarActivity"
+        android:label="Carrito de compras"
+        tools:layout="@layout/activity_car" />
+    <activity
+        android:id="@+id/profileActivity"
+        android:name="com.example.softwareprojectapp.activities.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
 
 
 </navigation>

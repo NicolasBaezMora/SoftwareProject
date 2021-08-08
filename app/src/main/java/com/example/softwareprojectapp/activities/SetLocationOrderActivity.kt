@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.databinding.ActivitySetUbicationOrderBinding
 import com.example.softwareprojectapp.models.SubOrder
@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SetLocationOrderActivity :
     AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener, View.OnClickListener, GoogleMap.OnMyLocationButtonClickListener {
 
@@ -37,7 +38,7 @@ class SetLocationOrderActivity :
     private var coordinates: LatLng? = null
 
     private val codeRequestPermissionLocation by lazy { 101 }
-    private val vm by lazy { ViewModelProviders.of(this).get(ViewModelSetLocationAndMakeOrder::class.java) }
+    private val vm by lazy { ViewModelProvider(this).get(ViewModelSetLocationAndMakeOrder::class.java) }
     private val emailId by lazy {
         this.getSharedPreferences(R.string.prefs_file.toString(), Context.MODE_PRIVATE)?.getString("email", null) ?: ""
     }
@@ -64,22 +65,21 @@ class SetLocationOrderActivity :
     }
 
     private fun addOrder(){
-        val listOrders = dataOrder["listOrders"] as List<*>
+        val listOrders = dataOrder["listOrders"] as List<SubOrder>
         val address = setUbicationOrderActivityBinding.editTextAddress.text.toString()
         if (address.isNotEmpty() && coordinates != null){
-            for(item in listOrders){
-                vm.addOrder(
-                    emailId,
-                    item as SubOrder,
-                    coordinates?.latitude!!,
-                    coordinates?.longitude!!,
-                    address,
-                    "Pendiente"
-                )
-                Car.listOrder.remove(item)
+            vm.addOrder(
+                emailId,
+                listOrders,
+                coordinates?.latitude!!,
+                coordinates?.longitude!!,
+                address,
+                "Pendiente"
+            ).apply {
+                Car.listOrder = mutableListOf()
+                Toast.makeText(this@SetLocationOrderActivity, "Pedido realizado", Toast.LENGTH_SHORT).show()
+                finish()
             }
-            Toast.makeText(this, "Pedido realizado", Toast.LENGTH_SHORT).show()
-            finish()
         }else{
             Toast.makeText(
                 this,

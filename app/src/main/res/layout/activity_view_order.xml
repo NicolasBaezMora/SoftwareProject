@@ -10,17 +10,26 @@
     <fragment
         android:id="@+id/fragmentMap"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideLine55"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".55"/>
 
     <TextView
         android:id="@+id/textViewDestinationPlace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="20dp"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +39,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:text="Modificar estado del pedido: "
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDestinationPlace"/>
+        app:layout_constraintTop_toBottomOf="@id/textViewDestinationPlace" />
 
     <EditText
         android:id="@+id/editTextOrderState"

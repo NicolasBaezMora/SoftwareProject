@@ -7,6 +7,8 @@ import com.example.softwareprojectapp.models.Order
 import com.example.softwareprojectapp.models.SubOrder
 import com.example.softwareprojectapp.models.Product
 import com.example.softwareprojectapp.models.User
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseRepo {
@@ -23,21 +25,24 @@ class FirebaseRepo {
         )
     }
 
-    fun addDataOrder(emailBuyer: String, subOrderData: SubOrder, latitude: Double, longitude: Double, address: String, state: String){
-        firebaseDataBase.collection("ORDERS").add(
-            mapOf(
-                "TITLE" to subOrderData.product.title,
-                "EMAILBUYER" to emailBuyer,
-                "EMAILSELLER" to subOrderData.product.emailId,
-                "URLIMAGE" to subOrderData.product.urlImage,
-                "AMOUNT" to subOrderData.amount,
-                "TOTAL" to subOrderData.total,
-                "LATITUDE" to latitude,
-                "LONGITUDE" to longitude,
-                "ADDRESS" to address,
-                "STATE" to state
+    fun addDataOrder(emailBuyer: String, subOrderDataList: List<SubOrder>, latitude: Double, longitude: Double, address: String, state: String) {
+        for (i in subOrderDataList) {
+            firebaseDataBase.collection("ORDERS").add(
+                    mapOf(
+                            "TITLE" to i.product.title,
+                            "EMAILBUYER" to emailBuyer,
+                            "EMAILSELLER" to i.product.emailId,
+                            "URLIMAGE" to i.product.urlImage,
+                            "AMOUNT" to i.amount,
+                            "TOTAL" to i.total,
+                            "LATITUDE" to latitude,
+                            "LONGITUDE" to longitude,
+                            "ADDRESS" to address,
+                            "STATE" to state
+                    )
             )
-        )
+        }
+
     }
 
     fun addDataProduct(emailUserId: String, title: String, description: String, price: Double): LiveData<String>{
@@ -81,12 +86,16 @@ class FirebaseRepo {
         return mutableDataUserExist
     }
 
-    fun updatePhotoProfileUser(email: String, photoUrl: String){
+    fun updatePhotoProfileUser(email: String, photoUrl: String): LiveData<Task<Void>>{
+        val result = MutableLiveData<Task<Void>>()
         firebaseDataBase.collection("USERS").document(email).update(
             mapOf(
                 "PHOTOURL" to photoUrl
             )
-        )
+        ).addOnCompleteListener {
+            if (it.isSuccessful) result.postValue(it)
+        }
+        return result
     }
 
     fun deleteProduct(idProduct: String){

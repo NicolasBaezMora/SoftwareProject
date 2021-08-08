@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.example.softwareprojectapp.fragments.LogInFragment"
-        android:label="fragment_log_in"
+        android:label=""
         tools:layout="@layout/fragment_log_in" >
         <action
             android:id="@+id/action_logInFragment_to_signInFragment"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.softwareprojectapp.fragments.SignInFragment"
-        android:label="fragment_sign_in"
+        android:label="Registrarse"
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_addProfilePhotoFragment"
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/addProfilePhotoFragment"
         android:name="com.example.softwareprojectapp.fragments.AddProfilePhotoFragment"
-        android:label="fragment_add_profile_photo"
+        android:label="Añadir foto de perfil"
         tools:layout="@layout/fragment_add_profile_photo" >
     </fragment>
 </navigation>

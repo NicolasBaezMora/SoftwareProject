@@ -18,6 +18,8 @@ class CarActivity: AppCompatActivity(), View.OnClickListener {
     private lateinit var orderCarAdapter: OrderCarAdapter
     private lateinit var carActivityBinding: ActivityCarBinding
 
+    private val deliveryService = 10500.0
+
     private val signDollar by lazy { Html.fromHtml("<b>$</b>") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +35,9 @@ class CarActivity: AppCompatActivity(), View.OnClickListener {
         super.onResume()
         setupRecyclerView()
 
-        carActivityBinding.textViewTotalOrderCar.text = "$signDollar${Car.getTotal()}"
+        carActivityBinding.textViewProductsTotal.text = "$signDollar${Car.getTotal()}"
+        carActivityBinding.textViewDeliveryServiceTotal.text = "$signDollar$deliveryService"
+        carActivityBinding.textViewTotalOrderCar.text = if (Car.getTotal() != 0.0) "$signDollar${Car.getTotal() + deliveryService}" else "${signDollar}0.0"
         carActivityBinding.floatingBtnMakeOrder.setOnClickListener(this)
 
     }
@@ -43,7 +47,8 @@ class CarActivity: AppCompatActivity(), View.OnClickListener {
         orderCarAdapter = OrderCarAdapter(Car.listOrder){
             Car.removeOrderFromCar(it)
             orderCarAdapter.notifyDataSetChanged()
-            carActivityBinding.textViewTotalOrderCar.text = "$signDollar${Car.getTotal()}"
+            carActivityBinding.textViewProductsTotal.text = "$signDollar${Car.getTotal()}"
+            carActivityBinding.textViewTotalOrderCar.text = if (Car.getTotal() != 0.0) "$signDollar${Car.getTotal() + deliveryService}" else "${signDollar}0.0"
         }
         carActivityBinding.recyclerViewOrders.adapter = orderCarAdapter
         carActivityBinding.recyclerViewOrders.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -59,7 +64,7 @@ class CarActivity: AppCompatActivity(), View.OnClickListener {
         if (Car.listOrder.isNotEmpty()){
             val bundleData = bundleOf(
                 "listOrders" to Car.listOrder,
-                "balance" to Car.getTotal()
+                "balance" to Car.getTotal() + deliveryService
             )
             val intentMakeOrder = Intent(this, SetLocationOrderActivity::class.java).apply {
                 putExtra("data", bundleData)

@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="drawerArrowStyle">@style/BarStyle</item>
     </style>
 
     <style name="BottomNavigationStyle">
@@ -19,12 +20,20 @@
         <item name="android:background">@color/white</item>
         <item name="itemTextColor">@color/standard_color</item>
         <item name="itemIconTint">@color/standard_color</item>
+        <item name="elevation">1dp</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.SoftwareProjectApp">
 
         <item name="android:windowBackground">@drawable/splash_screen</item>
 
+    </style>
+
+    <style name="BarStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="background">@color/gray</item>
+        <item name="titleTextColor">@color/standard_color</item>
+        <item name="spinBars">true</item>
+        <item name="color">@color/standard_color</item>
     </style>
 
 </resources>

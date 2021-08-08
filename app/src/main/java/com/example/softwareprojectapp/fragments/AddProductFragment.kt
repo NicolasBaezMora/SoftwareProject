@@ -53,7 +53,6 @@ class AddProductFragment : Fragment(), View.OnClickListener {
 
         addProductFragBinding.btnAddProduct.setOnClickListener(this)
         addProductFragBinding.btnAddImage.setOnClickListener(this)
-        addProductFragBinding.btnComeBack.setOnClickListener(this)
 
         vm.progressBar.observe(viewLifecycleOwner, Observer {
             if (it){
@@ -67,7 +66,6 @@ class AddProductFragment : Fragment(), View.OnClickListener {
             addProductFragBinding.editTextProductTitle.isFocusable = !it
             addProductFragBinding.btnAddImage.isFocusable = !it
             addProductFragBinding.btnAddProduct.isFocusable = !it
-            addProductFragBinding.btnComeBack.isFocusable = !it
 
         })
 
@@ -75,7 +73,6 @@ class AddProductFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when(view?.id){
-            addProductFragBinding.btnComeBack.id -> navigator.navigateUp()
             addProductFragBinding.btnAddProduct.id -> fillDataProduct()
             addProductFragBinding.btnAddImage.id -> checkMediaPermission()
         }

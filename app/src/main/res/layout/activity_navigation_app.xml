@@ -1,67 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
+    tools:openDrawer="start"
     tools:context=".activities.NavigationAppActivity">
 
-    <FrameLayout
-        android:id="@+id/viewToolBar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:id="@+id/imageViewBanner"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:src="@drawable/banner_img"
+            android:layout_height="?attr/actionBarSize"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/BarStyle"/>
 
-        <Button
-            android:id="@+id/btnShoppingCar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/ic_shopping_car"
-            android:layout_gravity="end"
-            app:backgroundTint="@null"/>
 
-        <Button
-            android:id="@+id/btnProfile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/ic_person_profile"
-            app:backgroundTint="@null"/>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            style="@style/BottomNavigationStyle"
+            android:id="@+id/bottomNavigationViewMainFlow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu_navigation_main_flow"/>
 
-    </FrameLayout>
+        <fragment
+            android:id="@+id/fragmentNavigationMainFlow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph_flow_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottomNavigationViewMainFlow"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <fragment
-        android:id="@+id/fragmentNavigationMainFlow"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph_flow_main"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewMainFlow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewToolBar" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        style="@style/BottomNavigationStyle"
-        android:id="@+id/bottomNavigationViewMainFlow"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_navigation_main_flow"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navViewDrawerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_drawer_layout"
+        app:itemIconTint="@color/standard_color"
+        app:itemTextColor="@color/standard_color"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

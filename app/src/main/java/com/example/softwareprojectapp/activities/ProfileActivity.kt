@@ -14,12 +14,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.example.softwareprojectapp.R
 import com.example.softwareprojectapp.adapters.PagerAdapter
 import com.example.softwareprojectapp.databinding.ActivityProfileBinding
 import com.example.softwareprojectapp.viewmodels.ViewModelProfile
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +55,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
     private fun setupDataUser(emailIdUser: String?){
         if (emailIdUser != null){
             vm.getDataFromUser(emailIdUser).observe(this, Observer {
-                Picasso.get().load(it.photoUrl).into(profileActivityBinding.imageViewPhotoProfile)
+                if (it.photoUrl.isNotEmpty()) Picasso.get().load(it.photoUrl).into(profileActivityBinding.imageViewPhotoProfile)
                 profileActivityBinding.textViewName.text = Html.fromHtml("<b>${it.name}</b>")
                 profileActivityBinding.textViewEmail.text = it.email
             })

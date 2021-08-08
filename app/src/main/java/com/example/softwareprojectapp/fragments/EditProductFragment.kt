@@ -60,7 +60,6 @@ class EditProductFragment : Fragment(), View.OnClickListener {
         productData = arguments?.getSerializable("product") as Product
         setupInputs()
 
-        editProductFragBinding.btnComeBack.setOnClickListener(this)
         editProductFragBinding.btnAddProduct.setOnClickListener(this)
         editProductFragBinding.btnAddImage.setOnClickListener(this)
 
@@ -68,15 +67,6 @@ class EditProductFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?){
         when(view?.id){
-            editProductFragBinding.btnComeBack.id -> {
-                val alertDialog = AlertDialog.Builder(requireContext())
-                alertDialog.setTitle("Cancelar actualización?")
-                alertDialog.setMessage("¿Seguro que quires cancelar la actualización del producto?")
-                alertDialog.setPositiveButton("Si"){ _, _ -> navigator.navigateUp()}
-                alertDialog.setNegativeButton("Cancelar"){ _, _ ->}
-                alertDialog.create()
-                alertDialog.show()
-            }
             editProductFragBinding.btnAddImage.id -> checkMediaPermission()
             editProductFragBinding.btnAddProduct.id -> updateProduct()
         }

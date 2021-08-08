@@ -10,7 +10,7 @@
     <string name="confirm_password">Confirmar contraseña</string>
     <string name="start">Comencemos!</string>
     <string name="textInformation"><b>Llena los campos para completar el registro</b></string>
-    <string name="textInformation_2">Tus datos se usaran para personalizar tu experiencia.</string>
+    <string name="textInformation_2">Tus datos se usaran para personalizar tu perfil.</string>
     <string name="sign_in_google"><b>Acceder con google</b></string>
     <string name="prefs_file">com.example.softwareprojectapp.PREFERENCE_FILE_KEY</string>
     <string name="info_invalid_length_pass">La contraseña debe tener minimo 8 caracteres</string>
@@ -37,11 +37,14 @@
     <string name="amount">Cantidad:</string>
     <string name="add_to_car">Agregar al carrito</string>
     <string name="total">Total:</string>
-    <string name="total_pedido">Total Pedido: </string>
+    <string name="total_pedido">Total Pedido:</string>
     <string name="text_marker_specifications">Para especificar otro destino de tu pedido arrastra el marcador</string>
     <string name="address">Dirección</string>
     <string name="confirm_order">Confimar pedido</string>
     <string name="ask_order">Pedir</string>
     <string name="update_photo">Actualizar foto</string>
     <string name="update_state">Actualizar estado</string>
+    <string name="shopping_car">Carrito de compras</string>
+    <string name="products_total">Total productos:</string>
+    <string name="delivery_service">Servicio de entrega:</string>
 </resources>

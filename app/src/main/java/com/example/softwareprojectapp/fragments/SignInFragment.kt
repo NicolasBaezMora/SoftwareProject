@@ -39,7 +39,6 @@ class SignInFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        signInFragBinding.btnComeBack.setOnClickListener(this)
         signInFragBinding.btnNextSignIn.setOnClickListener(this)
 
         vm.progressBar.observe(viewLifecycleOwner, Observer {
@@ -50,7 +49,6 @@ class SignInFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            signInFragBinding.btnComeBack.id -> navigator.navigateUp()
             signInFragBinding.btnNextSignIn.id -> emailAndPasswordSignIn()
         }
     }

@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -75,25 +76,15 @@ class AddProfilePhotoFragment : Fragment(), View.OnClickListener {
 
         dataUser = arguments?.get("user") as User
 
-        addProfilePhotoFragBinding.btnComeBack.setOnClickListener(this)
         addProfilePhotoFragBinding.btnTakePhoto.setOnClickListener(this)
         addProfilePhotoFragBinding.btnUploadPhoto.setOnClickListener(this)
-
+        addProfilePhotoFragBinding.btnSkipPhoto.setOnClickListener(this)
 
 
     }
 
     override fun onClick(view: View?){
         when(view?.id){
-            addProfilePhotoFragBinding.btnComeBack.id -> {
-                val builderDialog = AlertDialog.Builder(requireContext())
-                builderDialog.setTitle("¿Deseas volver?")
-                builderDialog.setMessage("Si vuelves deberas agregar tu foto desde tu perfil.")
-                builderDialog.setPositiveButton("Si"){ _, _ -> navigator.navigateUp() }
-                builderDialog.setNegativeButton("Cancelar"){ _, _ ->}
-                builderDialog.create()
-                builderDialog.show()
-            }
             addProfilePhotoFragBinding.btnTakePhoto.id -> checkCameraPermission()
             addProfilePhotoFragBinding.btnUploadPhoto.id -> checkMediaStorePermission()
             addProfilePhotoFragBinding.btnSkipPhoto.id -> goMainFlowNavigation(dataUser.email)
@@ -105,7 +96,11 @@ class AddProfilePhotoFragment : Fragment(), View.OnClickListener {
         imgPhotoProfileReference.putFile(imageProfile).addOnCompleteListener{ taskPutFile ->
             if (taskPutFile.isSuccessful){
                 imgPhotoProfileReference.downloadUrl.addOnCompleteListener{ taskGetUrl ->
-                    if (taskGetUrl.isSuccessful) vm.updatePhotoProfileUser(dataUser.email, taskGetUrl.result.toString())
+                    if (taskGetUrl.isSuccessful) {
+                        vm.updatePhotoProfileUser(dataUser.email, taskGetUrl.result.toString()).observe(viewLifecycleOwner, Observer {
+                            if (it) goMainFlowNavigation(dataUser.email)
+                        })
+                    }
                 }
             }
         }
@@ -217,7 +212,6 @@ class AddProfilePhotoFragment : Fragment(), View.OnClickListener {
         builderDialog.setMessage("¿Deseas usar esta imagen como foto de perfil?")
         builderDialog.setPositiveButton("Si"){ id, dialog ->
             updatePhotoProfile(imageUri)
-            goMainFlowNavigation(dataUser.email)
         }
         builderDialog.setNegativeButton("Elegir otra"){ _, _ ->}
         builderDialog.create()

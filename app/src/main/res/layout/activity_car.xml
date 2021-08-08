@@ -16,41 +16,111 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textViewTotalOrderCar"/>
+        app:layout_constraintBottom_toBottomOf="@id/guideLine70"/>
 
-    <TextView
-        android:id="@+id/txtViewTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/total_pedido"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine70"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".7"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-        android:id="@+id/textViewTotalOrderCar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txtViewTotal"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/floatingBtnMakeOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/standard_color"
-        android:text="@string/ask_order"
-        android:drawableLeft="@drawable/ic_delivery_car"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/guideLine70"
+        app:layout_constraintBottom_toBottomOf="parent">
 
+
+        <TextView
+            android:id="@+id/textViewTotalProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="@string/products_total"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/textViewDeliveryService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="@string/delivery_service"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTotalProducts"/>
+
+        <TextView
+            android:id="@+id/txtViewTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_pedido"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDeliveryService"/>
+
+
+
+        <TextView
+            android:id="@+id/textViewProductsTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textAlignment="textEnd"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toTopOf="@id/textViewTotalProducts"
+            app:layout_constraintStart_toEndOf="@id/textViewTotalProducts"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/textViewDeliveryServiceTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textAlignment="textEnd"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toTopOf="@id/textViewDeliveryService"
+            app:layout_constraintStart_toEndOf="@id/textViewDeliveryService"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/textViewTotalOrderCar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textAlignment="textEnd"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toTopOf="@id/txtViewTotal"
+            app:layout_constraintStart_toEndOf="@id/txtViewTotal"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/floatingBtnMakeOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/standard_color"
+            android:drawableLeft="@drawable/ic_delivery_car"
+            android:text="@string/ask_order"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewTotal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
