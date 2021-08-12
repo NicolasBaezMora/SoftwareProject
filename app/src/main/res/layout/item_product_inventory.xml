@@ -19,27 +19,30 @@
 
     <TextView
         android:id="@+id/textViewTitleProductInventory"
-        android:layout_width="180dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxHeight="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="10dp"
         android:text="TITLE"
         android:textSize="20sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toTopOf="@id/imageViewProductInventory"
-        app:layout_constraintStart_toEndOf="@id/imageViewProductInventory"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewProductInventory"
+        app:layout_constraintTop_toTopOf="@id/imageViewProductInventory" />
 
 
     <TextView
         android:id="@+id/textViewDescriptionProductInventory"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
         android:maxHeight="50dp"
         android:text="DESCRIPTION"
         android:textSize="20sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitleProductInventory"
-        app:layout_constraintStart_toEndOf="@id/imageViewProductInventory"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewProductInventory"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitleProductInventory" />
 
 
 

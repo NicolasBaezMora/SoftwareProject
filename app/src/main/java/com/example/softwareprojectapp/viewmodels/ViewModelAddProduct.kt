@@ -16,8 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ViewModelAddProduct
-@ViewModelInject
-constructor(private val firebaseRepo: FirebaseRepo, private val storageReference: StorageReference) : ViewModel() {
+@ViewModelInject constructor(private val firebaseRepo: FirebaseRepo, private val storageReference: StorageReference) : ViewModel() {
 
     private val _progressBar = MutableLiveData<Boolean>()
     val progressBar: LiveData<Boolean> get() = _progressBar

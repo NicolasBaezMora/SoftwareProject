@@ -48,7 +48,7 @@ class OrdersFragment : Fragment() {
 
     private fun setupRecyclerView() {
         ordersAdapter = OrdersAdapter {
-            Toast.makeText(context, "EZZZZZ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, it.title, Toast.LENGTH_SHORT).show()
         }
         ordersFragBinding.recyclerViewOrders.adapter = ordersAdapter
         ordersFragBinding.recyclerViewOrders.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

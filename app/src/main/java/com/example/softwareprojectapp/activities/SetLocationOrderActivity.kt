@@ -55,13 +55,28 @@ class SetLocationOrderActivity :
         mapFragment.getMapAsync(this)
 
         setUbicationOrderActivityBinding.btnConfirmOrder.setOnClickListener(this)
+        setUbicationOrderActivityBinding.btnHideLayout.setOnClickListener(this)
+        setUbicationOrderActivityBinding.floatingBtnLocation.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             setUbicationOrderActivityBinding.btnConfirmOrder.id -> addOrder()
+            setUbicationOrderActivityBinding.btnHideLayout.id -> hideLayout()
+            setUbicationOrderActivityBinding.floatingBtnLocation.id -> hideFloatingButton()
         }
+    }
+
+    private fun hideFloatingButton() {
+        setUbicationOrderActivityBinding.layoutExtraData.visibility = View.VISIBLE
+        setUbicationOrderActivityBinding.floatingBtnLocation.visibility = View.GONE
+    }
+
+    private fun hideLayout() {
+        setUbicationOrderActivityBinding.layoutExtraData.visibility = View.GONE
+        setUbicationOrderActivityBinding.floatingBtnLocation.visibility = View.VISIBLE
+
     }
 
     private fun addOrder(){
@@ -94,7 +109,6 @@ class SetLocationOrderActivity :
 
     override fun onMapReady(map: GoogleMap) {
         myMap = map
-        myMap.uiSettings.isZoomControlsEnabled = true
         myMap.setOnMarkerDragListener(this)
         myMap.setOnMyLocationButtonClickListener(this)
 

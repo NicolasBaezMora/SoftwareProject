@@ -25,5 +25,17 @@ class ViewModelProfile @ViewModelInject constructor(private val firebaseRepo: Fi
         }
         return userData
     }
+    fun updatePhotoProfileUser(email: String, photoUrl: String): LiveData<Boolean>{
+        val resultFunction = MutableLiveData(false)
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                firebaseRepo.updatePhotoProfileUser(email, photoUrl)
+            }
+            result.observeForever {
+                resultFunction.postValue(true)
+            }
+        }
+        return resultFunction
+    }
 
 }

@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/guideLine60">
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
         <fragment
@@ -25,63 +25,113 @@
             android:name="com.google.android.gms.maps.SupportMapFragment" />
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewAnnotation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_marginHorizontal="60dp"
-            android:layout_gravity="bottom"
-            app:cardElevation="10dp">
-
-            <TextView
-                android:id="@+id/txtView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_marker_specifications"
-                android:textSize="15sp"
-                android:layout_margin="20dp"/>
-
-        </androidx.cardview.widget.CardView>
 
 
     </FrameLayout>
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLine60"
+        android:id="@+id/guideLine65"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".6"/>
+        app:layout_constraintGuide_percent=".55"/>
 
-    <EditText
-        android:id="@+id/editTextAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="40dp"
-        android:hint="@string/address"
-        android:background="@drawable/background_input_fields"
-        android:padding="10dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutExtraData"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_contact_location"
+        app:layout_constraintTop_toTopOf="@id/guideLine65"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayoutMap"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
-        android:id="@+id/btnConfirmOrder"
-        android:layout_width="0dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnHideLayout"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewAnnotation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="50dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/text_marker_specifications"
+                android:textSize="15sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/editTextAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="45dp"
+            android:background="@drawable/background_input_fields"
+            android:drawableStart="@drawable/custom_icon_location"
+            android:drawablePadding="10dp"
+            android:hint="@string/address"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            app:layout_constraintBottom_toTopOf="@id/btnConfirmOrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewAnnotation" />
+
+        <Button
+            android:id="@+id/btnConfirmOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/background_btn_log_in"
+            android:text="@string/confirm_order"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingBtnLocation"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginVertical="20dp"
-        android:background="@drawable/background_btn_log_in"
-        android:text="@string/confirm_order"
-        app:backgroundTint="@null"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/white"
+        android:visibility="gone"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_baseline_edit_location_alt_focused"
+        app:tint="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextAddress" />
-
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

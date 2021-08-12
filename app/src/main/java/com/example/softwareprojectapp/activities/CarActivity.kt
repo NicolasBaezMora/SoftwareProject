@@ -27,6 +27,7 @@ class CarActivity: AppCompatActivity(), View.OnClickListener {
 
         carActivityBinding = ActivityCarBinding.inflate(layoutInflater)
         setContentView(carActivityBinding.root)
+        if (Car.listOrder.isEmpty()) carActivityBinding.layoutVoidCart.visibility = View.VISIBLE else carActivityBinding.layoutVoidCart.visibility = View.GONE
 
     }
 
@@ -49,6 +50,7 @@ class CarActivity: AppCompatActivity(), View.OnClickListener {
             orderCarAdapter.notifyDataSetChanged()
             carActivityBinding.textViewProductsTotal.text = "$signDollar${Car.getTotal()}"
             carActivityBinding.textViewTotalOrderCar.text = if (Car.getTotal() != 0.0) "$signDollar${Car.getTotal() + deliveryService}" else "${signDollar}0.0"
+            if (Car.listOrder.isEmpty()) carActivityBinding.layoutVoidCart.visibility = View.VISIBLE else carActivityBinding.layoutVoidCart.visibility = View.GONE
         }
         carActivityBinding.recyclerViewOrders.adapter = orderCarAdapter
         carActivityBinding.recyclerViewOrders.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

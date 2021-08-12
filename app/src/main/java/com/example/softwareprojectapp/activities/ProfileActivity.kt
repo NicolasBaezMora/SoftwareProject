@@ -125,7 +125,13 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                 val imageUri: Uri = data?.data!!
                 val imgPhotoProfileReference = storageReference.child("imagesPhotoProfile/$emailId/photo_profile_$emailId")
                 imgPhotoProfileReference.putFile(imageUri).addOnSuccessListener {
-                    Toast.makeText(this, "Foto actualizada", Toast.LENGTH_SHORT).show()
+                    imgPhotoProfileReference.downloadUrl.addOnCompleteListener { it ->
+                        if (it.isSuccessful) {
+                            vm.updatePhotoProfileUser(emailId!!, it.result.toString()).observe(this, Observer { resultTaskVM ->
+                                if (resultTaskVM) Toast.makeText(this, "Foto actualizada", Toast.LENGTH_SHORT).show()
+                            })
+                        }
+                    }
                 }.addOnFailureListener { Toast.makeText(this, "No fue posible actualizar la foto de perfil", Toast.LENGTH_SHORT).show() }
             }
         }

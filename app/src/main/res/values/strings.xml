@@ -39,12 +39,23 @@
     <string name="total">Total:</string>
     <string name="total_pedido">Total Pedido:</string>
     <string name="text_marker_specifications">Para especificar otro destino de tu pedido arrastra el marcador</string>
-    <string name="address">Dirección</string>
+    <string name="address">Dirección:</string>
     <string name="confirm_order">Confimar pedido</string>
     <string name="ask_order">Pedir</string>
     <string name="update_photo">Actualizar foto</string>
-    <string name="update_state">Actualizar estado</string>
+    <string name="update_state">Actualizar estado:</string>
     <string name="shopping_car">Carrito de compras</string>
     <string name="products_total">Total productos:</string>
     <string name="delivery_service">Servicio de entrega:</string>
+    <string name="order_description">Descripción de la orden</string>
+
+    <string-array name="spinner_options">
+        <item>Pendiente</item>
+        <item>En preparación</item>
+        <item>Lista para envio</item>
+        <item>En camino</item>
+        <item>Terminada</item>
+        <item>Cancelada</item>
+    </string-array>
+
 </resources>
